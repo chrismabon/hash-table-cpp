@@ -7,19 +7,19 @@
 
 #include "../headers/Table.hpp"
 
-Table::Table(int num_entries, int tbl_size, HashList** table) : num_entries(num_entries), tbl_size(tbl_size),
-                                                                table(table) {}
+Table::Table(int i_fill, int i_tbl_size, HashList** i_table)
+        : fill(i_fill), tbl_size(i_tbl_size), table(i_table) {}
 
 Table::~Table() = default {
 
 }
 
-int Table::get_num_entries() const {
-    return num_entries;
+int Table::get_fill() const {
+    return fill;
 }
 
-void Table::set_num_entries(int i_num_entries) {
-    Table::num_entries = i_num_entries;
+void Table::set_fill(int i_fill) {
+    Table::fill = i_fill;
 }
 
 int Table::get_tbl_size() const {

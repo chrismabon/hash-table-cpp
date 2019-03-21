@@ -7,7 +7,8 @@
 
 #include "../headers/Output.hpp"
 
-Output::Output(int dummy_var) : dummy_var(dummy_var) {}
+Output::Output(int i_dummy_var)
+        : dummy_var(i_dummy_var) {}
 
 Output::~Output() = default {
 

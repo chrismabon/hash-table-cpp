@@ -7,6 +7,12 @@
 
 #include <iostream>
 
+// Testing functions
+// TODO implement testing functions for KeyNode
+// TODO implement testing functions for HashList
+// TODO implement testing functions for Table
+
+
 int main() {
 
     return 0;
