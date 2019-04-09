@@ -8,6 +8,8 @@
 #ifndef HASH_TABLE_OUTPUT_HPP
 #define HASH_TABLE_OUTPUT_HPP
 
+#include "HashList.hpp"
+
 /**
  * @brief Class Output
  *
@@ -16,23 +18,27 @@
  */
 class Output {
 protected:
-    // Placeholder variable
-    int dummy_var;
+    // Output state
+    USI_t state;
 
 public:
     // Basic constructor
-    Output(int i_dummy_var);
+    explicit Output(USI_t i_state);
 
     // Destructor
     virtual ~Output();
 
     // Gets
-    int get_dummy_var() const;
+    USI_t get_state() const;
 
     // Sets
-    void set_dummy_var(int i_dummy_var);
+    void set_state(USI_t i_state);
 
-    // TODO implement print function
+
+    static void print_node(KeyNode* i_keynode);
+
+    static void print_list(HashList* i_hashlist);
+
     // TODO implement formatting function
 };
 

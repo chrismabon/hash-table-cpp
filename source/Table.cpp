@@ -7,31 +7,34 @@
 
 #include "../headers/Table.hpp"
 
-Table::Table(int i_fill, int i_tbl_size, HashList** i_table)
-        : fill(i_fill), tbl_size(i_tbl_size), table(i_table) {}
+Table::Table(ULLI_t i_fill = 0, ULLI_t i_tbl_size = 0,
+        HashList** i_table = nullptr)
+        : fill(i_fill), tbl_size(i_tbl_size), table(i_table) {
+
+}
 
 Table::~Table() = default {
 
 }
 
-int Table::get_fill() const {
+ULLI_t Table::get_fill() const {
     return fill;
 }
 
-void Table::set_fill(int i_fill) {
-    Table::fill = i_fill;
-}
-
-int Table::get_tbl_size() const {
+ULLI_t Table::get_tbl_size() const {
     return tbl_size;
-}
-
-void Table::set_tbl_size(int i_tbl_size) {
-    Table::tbl_size = i_tbl_size;
 }
 
 HashList** Table::get_table() const {
     return table;
+}
+
+void Table::set_fill(ULLI_t i_fill) {
+    Table::fill = i_fill;
+}
+
+void Table::set_tbl_size(ULLI_t i_tbl_size) {
+    Table::tbl_size = i_tbl_size;
 }
 
 void Table::set_table(HashList** i_table) {

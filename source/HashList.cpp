@@ -7,18 +7,20 @@
 
 #include "../headers/HashList.hpp"
 
-HashList::HashList(int i_num_keys, KeyNode* i_keys)
-        : num_keys(i_num_keys), keys(i_keys) {}
+HashList::HashList(USI_t i_num_keys = 0, KeyNode* i_keys = nullptr)
+        : num_keys(i_num_keys), keys(i_keys) {
+
+}
 
 HashList::~HashList() {
 
 }
 
-int HashList::get_num_keys() const {
+USI_t HashList::get_num_keys() const {
     return num_keys;
 }
 
-void HashList::set_num_keys(int i_num_keys) {
+void HashList::set_num_keys(USI_t i_num_keys) {
     HashList::num_keys = i_num_keys;
 }
 

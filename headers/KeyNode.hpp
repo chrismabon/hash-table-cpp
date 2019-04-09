@@ -8,6 +8,8 @@
 #ifndef HASH_TABLE_KEYNODE_HPP
 #define HASH_TABLE_KEYNODE_HPP
 
+#include "Config.hpp"
+
 /**
  * @brief Class KeyNode
  *
@@ -21,9 +23,9 @@ protected:
     char* key;
 
     // Length of key strings
-    // All key strings are really size 256 but are padded with zeroes in the
+    // All key strings are really size 256 but are padded in the
     //      otherwise empty elements
-    int key_len;
+    USI_t key_len;
 
     // Pointer to next key node in the hash list
     // The value "nullptr" may be assigned to signify the end node
@@ -31,7 +33,7 @@ protected:
 
 public:
     // Basic constructor
-    KeyNode(char* i_key, int i_key_len, KeyNode* i_next);
+    explicit KeyNode(char* i_key = nullptr, USI_t i_key_len = 0, KeyNode* i_next = nullptr);
 
     // Destructor
     // Frees the key array
@@ -40,14 +42,14 @@ public:
     // Gets
     char* get_key() const;
 
-    int get_key_len() const;
+    USI_t get_key_len() const;
 
     KeyNode* get_next() const;
 
     // Sets
     void set_key(char* i_key);
 
-    void set_key_len(int i_key_len);
+    void set_key_len(USI_t i_key_len);
 
     void set_next(KeyNode* i_next);
 };

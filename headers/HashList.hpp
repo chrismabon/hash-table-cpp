@@ -8,6 +8,7 @@
 #ifndef HASH_TABLE_HASHLIST_HPP
 #define HASH_TABLE_HASHLIST_HPP
 
+#include "Config.hpp"
 #include "KeyNode.hpp"
 
 /**
@@ -20,32 +21,37 @@
 class HashList {
 protected:
     // Total collision entries for associated hash value
-    int num_keys;
+    USI_t num_keys;
 
     // Unidirectional list of collision entries
     KeyNode* keys;
 
 public:
     // Basic constructor
-    HashList(int num_keys, KeyNode* keys);
+    HashList(USI_t num_keys = 0, KeyNode* keys = nullptr);
 
     // Destructor
     // Traverses the internal list of keys, deletes all entries
     virtual ~HashList();
 
     // Gets
-    int get_num_keys() const;
+    USI_t get_num_keys() const;
 
     KeyNode* get_keys() const;
 
     // Sets
-    void set_num_keys(int i_num_keys);
+    void set_num_keys(USI_t i_num_keys);
 
     void set_keys(KeyNode* i_keys);
 
     // TODO implement "append node" function
+    USI_t append_node(KeyNode* i_keynode);
+
     // TODO implement "delete node" function
+    USI_t delete_node(KeyNode* i_keynode);
+
     // TODO implement "peek node" function
+    HashList* peek_nodes(USI_t i_hash, USI_t i_index = -1);
 
 };
 
