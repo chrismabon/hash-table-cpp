@@ -7,7 +7,7 @@
 
 #include "../headers/HashList.hpp"
 
-HashList::HashList(USI_t i_num_keys = 0, KeyNode* i_keys = nullptr)
+HashList::HashList(USI_t i_num_keys, KeyNode* i_keys)
         : num_keys(i_num_keys), keys(i_keys) {
 
 }

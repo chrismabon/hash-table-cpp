@@ -39,7 +39,6 @@ public:
 
     static void print_list(HashList* i_hashlist);
 
-    // TODO implement formatting function
 };
 
 

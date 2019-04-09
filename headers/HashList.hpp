@@ -28,7 +28,7 @@ protected:
 
 public:
     // Basic constructor
-    HashList(USI_t num_keys = 0, KeyNode* keys = nullptr);
+    explicit HashList(USI_t num_keys = 0, KeyNode* keys = nullptr);
 
     // Destructor
     // Traverses the internal list of keys, deletes all entries
@@ -43,15 +43,6 @@ public:
     void set_num_keys(USI_t i_num_keys);
 
     void set_keys(KeyNode* i_keys);
-
-    // TODO implement "append node" function
-    USI_t append_node(KeyNode* i_keynode);
-
-    // TODO implement "delete node" function
-    USI_t delete_node(KeyNode* i_keynode);
-
-    // TODO implement "peek node" function
-    HashList* peek_nodes(USI_t i_hash, USI_t i_index = -1);
 
 };
 

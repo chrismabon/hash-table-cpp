@@ -56,22 +56,6 @@ public:
 
     void set_table(HashList** i_table);
 
-    // TODO implement hash function
-    ULLI_t hash_str(char* i_key);
-
-    // TODO implement "add entry" function
-    ULLI_t add_entry(char* i_entry);
-
-    // TODO implement "delete entry" function
-    ULLI_t del_entry(KeyNode* i_entry);
-
-    // TODO implement "find keys" function
-    HashList* find_keys(ULLI_t i_hash);
-
-    // TODO implement "check key" function
-
-    // TODO implement "clear table" function
-    ULLI_t clear_table();
 };
 
 

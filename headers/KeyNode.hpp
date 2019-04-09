@@ -32,8 +32,14 @@ protected:
     KeyNode* next;
 
 public:
-    // Basic constructor
-    explicit KeyNode(char* i_key = nullptr, USI_t i_key_len = 0, KeyNode* i_next = nullptr);
+    // Basic constructors
+    KeyNode();
+
+    explicit KeyNode(const char* i_key);
+
+    KeyNode(const char* i_key, USI_t i_key_len);
+
+    KeyNode(char* i_key, USI_t i_key_len, KeyNode* i_next = nullptr);
 
     // Destructor
     // Frees the key array
@@ -52,6 +58,11 @@ public:
     void set_key_len(USI_t i_key_len);
 
     void set_next(KeyNode* i_next);
+
+    // Helper functions
+    USI_t find_key_len(const char* i_key);
+
+    char* copy_key(const char* i_key, USI_t i_key_len);
 };
 
 

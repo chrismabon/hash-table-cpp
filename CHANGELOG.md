@@ -1,5 +1,22 @@
 # Change Log
 
+## 2019-04-09
+
+#### v0.0.2
+
+###### Additions
+
+- more tests for KeyNode class
+- find key length and key copy helper functions
+- more constructors for KeyNode class
+
+###### Changes
+
+- set_key() now creates and assigns a copy of the input key
+rather than a pointer to it
+- print_node() now correctly prints the next node's key (instead of
+the current node's key) where the next key is expected
+
 ## 2019-04-08
 
 #### v0.0.2

@@ -7,13 +7,12 @@
 
 #include "../headers/Table.hpp"
 
-Table::Table(ULLI_t i_fill = 0, ULLI_t i_tbl_size = 0,
-        HashList** i_table = nullptr)
+Table::Table(ULLI_t i_fill, ULLI_t i_tbl_size, HashList** i_table)
         : fill(i_fill), tbl_size(i_tbl_size), table(i_table) {
 
 }
 
-Table::~Table() = default {
+Table::~Table() {
 
 }
 

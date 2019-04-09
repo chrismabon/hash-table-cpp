@@ -13,7 +13,7 @@ Output::Output(USI_t i_state)
 
 }
 
-Output::~Output() = default {
+Output::~Output() {
 
 }
 
@@ -35,8 +35,11 @@ void Output::print_node(KeyNode* i_keynode) {
         cout << "Key length: " << i_keynode->get_key_len();
         cout << " | ";
         cout << "Next node: ";
-        i_keynode->get_next() ? cout << i_keynode->get_key() << " |" << endl
-                              : cout << "NULL |" << endl;
+        i_keynode->get_next() ? cout << i_keynode->get_next()->get_key() << " |" << endl
+                              : cout << "NULL" << " |" << endl;
+    }
+    else {
+        cout << "| Node is empty |" << endl;
     }
 }
 
