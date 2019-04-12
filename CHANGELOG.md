@@ -1,6 +1,23 @@
 # Change Log
 
+## 2019-04-12
+
+###### Additions
+
+- list of specific error codes for program exceptions
+- exception handling for KeyNode class functions
+
 ## 2019-04-09
+
+#### v0.0.3
+
+###### Additions
+
+- more documentation
+
+###### Changes
+
+- program now accepts C++ strings as the key value type
 
 #### v0.0.2
 

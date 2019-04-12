@@ -1,68 +1,128 @@
+/*
+ * KeyNode.hpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
+ * @package hash_table
  * @author Chris Mabon
+ * https://github.com/chrismabon
  */
 
 #ifndef HASH_TABLE_KEYNODE_HPP
 #define HASH_TABLE_KEYNODE_HPP
 
+#define EXP_STR(key) ((key).reserve(STR_CAP))
+
 #include "Config.hpp"
 
 /**
- * @brief Class KeyNode
+ * @class KeyNode
+ * @brief Holds a unique key value
  *
- * This is the node class to hold unique key values, normally contained
- * within a linked list class. Nodes are chained to represent unique
- * keys that share a hash value.
+ * Keys are represented and manipulated as C++ strings.
+ * Key length does *NOT* include the padding characters.
+ * The pointer to the next node allows unidirectional traversal within the parent list class.
  */
 class KeyNode {
-protected:
-    // Pointer to character string representing key value
-    char* key;
+private:
+    /// #####################
+    /// ### CLASS MEMBERS ###
+    /// #####################
 
-    // Length of key strings
-    // All key strings are really size 256 but are padded in the
-    //      otherwise empty elements
-    USI_t key_len;
+    /**
+     * KEY VALUE
+     *  -Pointer to C++ string
+     */
+    std::string _key;
 
-    // Pointer to next key node in the hash list
-    // The value "nullptr" may be assigned to signify the end node
-    KeyNode* next;
+    /**
+     * KEY LENGTH
+     *  -All key strings are padded with the ASCII value of the element's array offset modulo 94,
+     *      plus the value 33 (ASCII offset + 1, which excludes the blank space ' '):
+     *      ~If key[0] is empty, it is padded with ASCII value 0 + 33 = 33 (the character '!')
+     *      ~If key[50] is empty, " " value 50 + 33 = 83 (the character 'X')
+     *      ~If key[456] is empty, " " value 80 + 33 = 113 (the character 'q')
+     */
+    SmInt _keyLen;
+
+    /**
+     * LINK TO NEXT NODE
+     *  -The value "nullptr" may be assigned to signify the end node
+     */
+    KeyNode* _next;
 
 public:
-    // Basic constructors
+    /// #################################
+    /// ### CONSTRUCTORS & DESTRUCTOR ###
+    /// #################################
+
+    /**
+     * EMPTY CONSTRUCTOR
+     * @brief Instantiate an empty KeyNode
+     */
     KeyNode();
 
-    explicit KeyNode(const char* i_key);
+    /**
+     * PRIMARY CONSTRUCTOR
+     * @brief Instantiate KeyNode with input key and
+     * @param key String value assigned to _key
+     */
+    explicit KeyNode(std::string key);
 
-    KeyNode(const char* i_key, USI_t i_key_len);
+    /**
+     * SECONDARY CONSTRUCTOR
+     * @brief Instantiate KeyNode with input key and
+     * @param key String value assigned to _key
+     * @param next Link to next node in parent list (can be nullptr)
+     */
+    KeyNode(std::string key, KeyNode* next);
 
-    KeyNode(char* i_key, USI_t i_key_len, KeyNode* i_next = nullptr);
-
-    // Destructor
-    // Frees the key array
+    /**
+     * DESTRUCTOR
+     * @brief Frees the key array
+     */
     virtual ~KeyNode();
 
-    // Gets
-    char* get_key() const;
+    /// ###########################
+    /// ### GET & SET FUNCTIONS ###
+    /// ###########################
 
-    USI_t get_key_len() const;
+    /**
+     * GETS
+     *  -All get functions return their respective values naively
+     */
+    std::string getKey() const;
 
-    KeyNode* get_next() const;
+    SmInt getKeyLen() const;
 
-    // Sets
-    void set_key(char* i_key);
+    KeyNode* getNext() const;
 
-    void set_key_len(USI_t i_key_len);
+    /**
+     * SETS
+     *  -All set functions assign values without validating input
+     */
+    void setKey(std::string key);
 
-    void set_next(KeyNode* i_next);
+    void setKeyLen(SmInt keyLen);
 
-    // Helper functions
-    USI_t find_key_len(const char* i_key);
-
-    char* copy_key(const char* i_key, USI_t i_key_len);
+    void setNext(KeyNode* next);
 };
 
 

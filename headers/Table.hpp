@@ -1,8 +1,28 @@
+/*
+ * Table.hpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
+ * @package hash_table
  * @author Chris Mabon
+ * https://github.com/chrismabon
  */
 
 #ifndef HASH_TABLE_TABLE_HPP
@@ -23,36 +43,36 @@
  *      - clear the table of all entries
  */
 class Table {
-protected:
+private:
     // Number of occupied buckets in the table
-    ULLI_t fill;
+    LgInt fill;
 
     // Total size of the array (not actual table capacity)
     // Must be a power of 2
-    ULLI_t tbl_size;
+    LgInt tbl_size;
 
     // Pointer to array of hash lists
     HashList** table;
 
 public:
     // Basic constructor
-    Table(ULLI_t i_fill, ULLI_t i_tbl_size, HashList** i_table);
+    Table(LgInt i_fill, LgInt i_tbl_size, HashList** i_table);
 
     // Destructor
     // Frees all hash entries
     virtual ~Table();
 
     // Gets
-    ULLI_t get_fill() const;
+    LgInt get_fill() const;
 
-    ULLI_t get_tbl_size() const;
+    LgInt get_tbl_size() const;
 
     HashList** get_table() const;
 
     // Sets
-    void set_fill(ULLI_t i_fill);
+    void set_fill(LgInt i_fill);
 
-    void set_tbl_size(ULLI_t i_tbl_size);
+    void set_tbl_size(LgInt i_tbl_size);
 
     void set_table(HashList** i_table);
 

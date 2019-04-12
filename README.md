@@ -31,7 +31,7 @@ Operations
 
 Constraints
 
-- Only accepts C-style NULL-terminated strings (C++ standard strings are converted)
+- Only accepts C++ std::string as the key value type
 - Table should not be more than 70% full for best performance
 ```
 ## Features implemented

@@ -1,44 +1,96 @@
+/*
+ * Output.hpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
+ * @package hash_table
  * @author Chris Mabon
+ * https://github.com/chrismabon
  */
 
 #ifndef HASH_TABLE_OUTPUT_HPP
 #define HASH_TABLE_OUTPUT_HPP
 
+#include <system_error>
 #include "HashList.hpp"
 
 /**
- * @brief Class Output
+ * @class Output
+ * @brief Aggregates print and formatting functions
  *
  * This is the output class for the hash table, which is mostly a wrapper for various
  * console printing and formatting functions.
  */
 class Output {
-protected:
-    // Output state
-    USI_t state;
+private:
+    /// #####################
+    /// ### CLASS MEMBERS ###
+    /// #####################
+
+    /**
+     * OUTPUT STATE
+     *  -
+     */
+    SmInt _state;
 
 public:
+    enum class ErrCode {
+        SUCCESS = 0,
+        GEN_EXC = 1,
+
+        KEY_EMPTY = 10
+    };
+
     // Basic constructor
-    explicit Output(USI_t i_state);
+    explicit Output(SmInt state);
 
     // Destructor
     virtual ~Output();
 
     // Gets
-    USI_t get_state() const;
+    SmInt get_state() const;
 
     // Sets
-    void set_state(USI_t i_state);
+    void set_state(SmInt state);
 
+    /// #######################
+    /// ### PRINT FUNCTIONS ###
+    /// #######################
 
-    static void print_node(KeyNode* i_keynode);
+    /**
+     * PRINT NODE
+     * @param keyNode Prints this individual node
+     */
+    static void print_node(KeyNode* keyNode) const;
 
-    static void print_list(HashList* i_hashlist);
+    /**
+     * PRINT LIST
+     * @param hashList Prints this list and its member nodes
+     */
+    static void print_list(HashList* hashList) const;
 
+    /**
+     * PRINT EXCEPTION
+     * @param excep Prints this error message
+     */
+    static void print_excep(std::string excep) const;
 };
 
 

@@ -1,54 +1,80 @@
+/*
+ * Output.cpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
+ * @package hash_table
  * @author Chris Mabon
+ * https://github.com/chrismabon
  */
 
 #include "../headers/Output.hpp"
 #include <iostream>
 
-Output::Output(USI_t i_state)
-        : state(i_state) {
+Output::Output(SmInt state)
+        : _state(state) {
 
 }
 
-Output::~Output() {
+Output::~Output() = default {
 
 }
 
-USI_t Output::get_state() const {
-    return state;
+SmInt Output::get_state() const {
+    return _state;
 }
 
-void Output::set_state(USI_t i_state) {
-    Output::state = i_state;
+void Output::set_state(SmInt state) {
+    Output::_state = state;
 }
 
-void Output::print_node(KeyNode* i_keynode) {
+void Output::print_node(KeyNode* keyNode) const {
     using namespace std;
 
-    if (i_keynode && i_keynode->get_key() && i_keynode->get_key_len()) {
+    if (keyNode->getKey().length() && keyNode->getKeyLen()) {
         cout << "| ";
-        cout << "Key: " << i_keynode->get_key();
+        cout << "Key: " << keyNode->getKey();
         cout << " | ";
-        cout << "Key length: " << i_keynode->get_key_len();
+        cout << "Key length: " << keyNode->getKeyLen();
         cout << " | ";
         cout << "Next node: ";
-        i_keynode->get_next() ? cout << i_keynode->get_next()->get_key() << " |" << endl
-                              : cout << "NULL" << " |" << endl;
+        keyNode->getNext() ? cout << keyNode->getNext()->getKey() << " |" << endl
+                           : cout << "NULL" << " |" << endl;
     }
     else {
         cout << "| Node is empty |" << endl;
     }
 }
 
-void Output::print_list(HashList* i_hashlist) {
+void Output::print_list(HashList* hashList) const {
     using namespace std;
 
-    KeyNode* cur_node = i_hashlist->get_keys();
-    while(cur_node) {
+    KeyNode* cur_node = hashList->getKeys();
+    while (cur_node) {
         Output::print_node(cur_node);
-        cur_node = cur_node->get_next();
+        cur_node = cur_node->getNext();
     }
+}
+
+void Output::print_excep(std::string excep) const {
+    using namespace std;
+
+    cout << "|ERR| " << excep << endl;
 }

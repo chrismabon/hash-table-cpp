@@ -1,8 +1,28 @@
+/*
+ * test.cpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
+ * @package hash_table
  * @author Chris Mabon
+ * https://github.com/chrismabon
  */
 
 #include <iostream>
@@ -10,10 +30,10 @@
 #include "../headers/Output.hpp"
 
 // Testing functions
-USI_t test_KeyNode() {
+SmInt test_KeyNode() {
     using namespace std;
 
-    USI_t retval = 0;
+    SmInt retval = 0;
 
     cout << "===| BEGIN TEST: KeyNode class |===" << endl;
     cout << endl;
@@ -25,9 +45,9 @@ USI_t test_KeyNode() {
         cout << "\t1) Constructors" << endl;
         cout << endl;
 
-        char text_0[] = {'n', 'U', 'l', 'Z', '\0'};
-        char text_1[] = {'B', 'l', 'A', 'n', 'K', '\0'};
-        char text_2[] = {'Y', 'A', 'F', 'F', 'I', 'N', 'A', 'T', 'O', 'R', '\0'};
+        string text_0 = {'n', 'U', 'l', 'Z', '\0'};
+        string text_1 = {'B', 'l', 'A', 'n', 'K', '\0'};
+        string text_2 = {'Y', 'A', 'F', 'F', 'I', 'N', 'A', 'T', 'O', 'R', '\0'};
         cout << "| text_0 is " << text_0 << endl;
         cout << "| text_1 is " << text_1 << endl;
         cout << "| text_2 is " << text_2 << endl;
@@ -35,8 +55,8 @@ USI_t test_KeyNode() {
 
         auto* node_blank = new KeyNode();
         auto* node_2 = new KeyNode(text_2);
-        auto* node_1 = new KeyNode(text_0, 4);
-        auto* node_0 = new KeyNode(text_1, 5, node_1);
+        auto* node_1 = new KeyNode(text_0);
+        auto* node_0 = new KeyNode(text_1, node_1);
 
         //
         Output::print_node(node_blank);
@@ -44,16 +64,16 @@ USI_t test_KeyNode() {
         Output::print_node(node_1);
         Output::print_node(node_2);
 
-        if (node_0->get_key()[0] != 'B') {
-            cout << "|Err| Failed to set key " << endl;
+        if (node_0->getKey()[0] != 'B') {
+            cout << "|ERR| Failed to set key " << endl;
             retval = 11;
         }
-        if (node_0->get_key_len() != 5) {
-            cout << "|Err| Failed to set key_len " << endl;
+        if (node_0->getKeyLen() != 5) {
+            cout << "|ERR| Failed to set _keyLen " << endl;
             retval = 12;
         }
-        if (node_0->get_next() != node_1) {
-            cout << "|Err| Failed to set link " << endl;
+        if (node_0->getNext() != node_1) {
+            cout << "|ERR| Failed to set link " << endl;
             retval = 13;
         }
 
@@ -67,43 +87,43 @@ USI_t test_KeyNode() {
         cout << "\t2) Sets and gets" << endl;
         cout << endl;
 
-        USI_t key_len_0 = 4;
-        USI_t key_len_1 = 5;
-        USI_t key_len_2 = 10;
+        SmInt key_len_0 = 4;
+        SmInt key_len_1 = 5;
+        SmInt key_len_2 = 10;
 
         cout << "| Setting node_blank key to " << text_1 << " " << endl;
-        cout << "| Setting node_blank key_len to " << key_len_1 << " " << endl;
-        cout << "| Setting node_blank link to " << node_2->get_key() << " " << endl;
-        node_blank->set_key(text_1);
-        node_blank->set_key_len(key_len_1);
-        node_blank->set_next(node_2);
+        cout << "| Setting node_blank _keyLen to " << key_len_1 << " " << endl;
+        cout << "| Setting node_blank link to " << node_2->getKey() << " " << endl;
+        node_blank->setKey(text_1);
+        node_blank->setKeyLen(key_len_1);
+        node_blank->setNext(node_2);
 
         Output::print_node(node_blank);
 
-        cout << "| Setting node_1 link to " << node_2->get_key() << " " << endl;
-        node_1->set_next(node_2);
-        cout << "| Setting node_blank key to " << node_2->get_key() << " " << endl;
-        cout << "| Setting node_blank key_len to " << node_2->get_key_len() << " " << endl;
-        cout << "| Setting node_2 link to " << node_blank->get_key() << " " << endl;
-        node_blank->set_key(node_2->get_key());
-        node_blank->set_key_len(node_2->get_key_len());
-        node_2->set_next(node_blank);
+        cout << "| Setting node_1 link to " << node_2->getKey() << " " << endl;
+        node_1->setNext(node_2);
+        cout << "| Setting node_blank key to " << node_2->getKey() << " " << endl;
+        cout << "| Setting node_blank _keyLen to " << node_2->getKeyLen() << " " << endl;
+        cout << "| Setting node_2 link to " << node_blank->getKey() << " " << endl;
+        node_blank->setKey(node_2->getKey());
+        node_blank->setKeyLen(node_2->getKeyLen());
+        node_2->setNext(node_blank);
 
         Output::print_node(node_blank);
         Output::print_node(node_2);
         Output::print_node(node_1);
         Output::print_node(node_0);
 
-        if (node_blank->get_key()[0] != 'Y') {
-            cout << "|Err| Failed to set key " << endl;
+        if (node_blank->getKey()[0] != 'Y') {
+            cout << "|ERR| Failed to set key " << endl;
             retval = 21;
         }
-        if (node_blank->get_key_len() != key_len_2) {
-            cout << "|Err| Failed to set key_len " << endl;
+        if (node_blank->getKeyLen() != key_len_2) {
+            cout << "|ERR| Failed to set _keyLen " << endl;
             retval = 22;
         }
-        if (node_blank->get_next() != node_2) {
-            cout << "|Err| Failed to set link " << endl;
+        if (node_blank->getNext() != node_2) {
+            cout << "|ERR| Failed to set link " << endl;
             retval = 23;
         }
 
@@ -120,13 +140,13 @@ USI_t test_KeyNode() {
         KeyNode* node_ptr = nullptr;
 
         if (true) {
-            auto* node_scoped = new KeyNode(text_1, key_len_1, node_blank);
+            auto* node_scoped = new KeyNode(text_1, node_blank);
             node_ptr = node_scoped;
             Output::print_node(node_ptr);
         }
 
-        if (node_ptr->get_key()[0] == 'Y') {
-            cout << "|Err| Destructor failed " << endl;
+        if (node_ptr->getKey()[0] == 'Y') {
+            cout << "|ERR| Destructor failed " << endl;
             Output::print_node(node_ptr);
             retval = 1;
         }
@@ -137,19 +157,19 @@ USI_t test_KeyNode() {
         cout << "\tEnd section 3" << endl;
     }
     catch (const system_error &ex) {
-        cout << "|Err| System error: " << ex.what() << endl;
+        cout << "|ERR| System error: " << ex.what() << endl;
         retval = 4;
     }
     catch (const bad_alloc &ex) {
-        cout << "|Err| Memory-allocation error: " << ex.what() << endl;
+        cout << "|ERR| Memory-allocation error: " << ex.what() << endl;
         retval = 3;
     }
     catch (const range_error &ex) {
-        cout << "|Err| Value error: " << ex.what() << endl;
+        cout << "|ERR| Value error: " << ex.what() << endl;
         retval = 2;
     }
     catch (...) {
-        cout << "|Err| Unhandled exception! " << endl;
+        cout << "|ERR| Unhandled exception! " << endl;
         retval = 1;
     }
 
@@ -158,14 +178,14 @@ USI_t test_KeyNode() {
     return retval;
 };
 
-USI_t test_HashList() {
-    USI_t retval = 0;
+SmInt test_HashList() {
+    SmInt retval = 0;
 
     return retval;
 };
 
-USI_t test_Table() {
-    USI_t retval = 0;
+SmInt test_Table() {
+    SmInt retval = 0;
 
     return retval;
 };

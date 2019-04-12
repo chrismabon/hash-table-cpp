@@ -1,94 +1,115 @@
-/**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
- * @author Chris Mabon
+/*
+ * KeyNode.cpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @package hash_table
+ * @author Chris Mabon
+ * https://github.com/chrismabon
+ */
+
+#include <limits>
+#include <stdexcept>
+#include <system_error>
 #include "../headers/KeyNode.hpp"
+#include "../headers/Output.hpp"
 
 KeyNode::KeyNode()
-        : key(nullptr), key_len(0), next(nullptr) {
+        : _key(nullptr), _keyLen(0), _next(nullptr) {
+
 }
 
-KeyNode::KeyNode(const char* i_key)
-        : next(nullptr) {
-    if (i_key) {
-        USI_t new_key_len = KeyNode::find_key_len(i_key);
-        if (new_key_len) {
-            KeyNode::key = KeyNode::copy_key(i_key, new_key_len);
-            KeyNode::key_len = new_key_len;
+KeyNode::KeyNode(std::string key, KeyNode* next) : _next(next) {
+    try {
+        if (!key.empty) {
+            KeyNode::_key = key;
+            EXP_STR(KeyNode::_key);
+            KeyNode::_keyLen = static_cast<SmInt>(key.length());
+        }
+        else {
+            KeyNode::_keyLen = 0;
+            KeyNode::_key = nullptr;
+            KeyNode::_next = nullptr;
+            throw std::invalid_argument::invalid_argument(" ");
         }
     }
-}
-
-KeyNode::KeyNode(const char* i_key, USI_t i_key_len)
-        : next(nullptr) {
-    if (i_key && i_key_len) {
-        KeyNode::key = KeyNode::copy_key(i_key, i_key_len);
-        KeyNode::key_len = i_key_len;
-    }
-}
-
-KeyNode::KeyNode(char* i_key, USI_t i_key_len, KeyNode* i_next)
-        : next(i_next) {
-    if (i_key && i_key_len) {
-        KeyNode::key = KeyNode::copy_key(i_key, i_key_len);
-        KeyNode::key_len = i_key_len;
-    }
-}
-
-KeyNode::~KeyNode() {
-    delete[] this->key;
-}
-
-char* KeyNode::get_key() const {
-    return key;
-}
-
-USI_t KeyNode::get_key_len() const {
-    return key_len;
-}
-
-KeyNode* KeyNode::get_next() const {
-    return next;
-}
-
-void KeyNode::set_key(char* i_key) {
-    USI_t i_key_len = KeyNode::find_key_len(i_key);
-    KeyNode::key = KeyNode::copy_key(i_key, i_key_len);
-}
-
-void KeyNode::set_key_len(USI_t i_key_len) {
-    KeyNode::key_len = i_key_len;
-}
-
-void KeyNode::set_next(KeyNode* i_next) {
-    KeyNode::next = i_next;
-}
-
-USI_t KeyNode::find_key_len(const char* i_key) {
-    USI_t key_len = 0;
-
-    if (i_key) {
-        const char* key_cur = i_key;
-
-        for (USI_t i = 0; key_cur[i] != '\0'; i++) {
-            key_len += 1;
+    catch (const std::system_error &err) {
+        if (err.code() == std::errc::invalid_argument) {
+            Output::print_excep(EXCEPTIONS[ERR_INVALID_KEY_ARG]);
         }
     }
-
-    return key_len;
+    catch (...) {
+        std::string ex = EXCEPTIONS[ERR_GEN_EXCEPTION];
+        Output::print_excep(ex);
+    }
 }
 
-char* KeyNode::copy_key(const char* i_key, USI_t i_key_len) {
-    char* new_key = nullptr;
-    if (i_key && i_key_len) {
-        new_key = new char[i_key_len + 1];
-        for (USI_t i = 0; i < i_key_len + 1; i++) {
-            new_key[i] = i_key[i];
+KeyNode::KeyNode(std::string key) {
+    try {
+        if (!key.empty) {
+            KeyNode::_key = key;
+            EXP_STR(KeyNode::_key);
+            KeyNode::_keyLen = static_cast<SmInt>(key.length());
+        }
+        else {
+            KeyNode::_keyLen = 0;
+            KeyNode::_key = nullptr;
+            KeyNode::_next = nullptr;
+            throw std::invalid_argument::invalid_argument(" ");
         }
     }
+    catch (const std::system_error &err) {
+        if (err.code() == std::errc::invalid_argument) {
+            Output::print_excep(EXCEPTIONS[ERR_INVALID_KEY_ARG]);
+        }
+    }
+    catch (...) {
+        std::string ex = EXCEPTIONS[ERR_GEN_EXCEPTION];
+        Output::print_excep(ex);
+    }
+}
 
-    return new_key;
+KeyNode::~KeyNode() = default {
+    delete KeyNode::_key;
+}
+
+std::string KeyNode::getKey() const {
+    return _key;
+}
+
+SmInt KeyNode::getKeyLen() const {
+    return _keyLen;
+}
+
+KeyNode* KeyNode::getNext() const {
+    return _next;
+}
+
+void KeyNode::setKey(std::string key) {
+    KeyNode::_key = key;
+}
+
+void KeyNode::setKeyLen(SmInt keyLen) {
+    KeyNode::_keyLen = keyLen;
+}
+
+void KeyNode::setNext(KeyNode* next) {
+    KeyNode::_next = next;
 }

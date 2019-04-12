@@ -1,33 +1,71 @@
+/*
+ * HashList.cpp
+ *
+ * Hash Table
+ * A data structure template in C++
+ * Copyright (C) 2019 Chris Mabon
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * @title Hash Table
- * @project hash_table
- * @github https://github.com/chrismabon/hash_table
+ * @package hash_table
  * @author Chris Mabon
+ * https://github.com/chrismabon
  */
 
 #include "../headers/HashList.hpp"
 
-HashList::HashList(USI_t i_num_keys, KeyNode* i_keys)
-        : num_keys(i_num_keys), keys(i_keys) {
+HashList::HashList() {
+    HashList::_numKeys = 0;
+    HashList::_headKey = nullptr;
+}
+
+HashList::HashList(SmInt numKeys, KeyNode* keys = nullptr)
+        : _numKeys(numKeys), _headKey(keys) {
 
 }
 
-HashList::~HashList() {
-
+HashList::~HashList() = default {
+    bool toDelete = (HashList::_headKey) && (HashList::_numKeys);
+    switch (toDelete) {
+        case true:
+            KeyNode* cur = HashList::_headKey;
+            KeyNode* cur_del = cur;
+            while (cur) {
+                delete cur_del;
+                cur_del = cur;
+                cur = cur->getNext();
+            }
+            break;
+        default:
+            break;
+    }
 }
 
-USI_t HashList::get_num_keys() const {
-    return num_keys;
+SmInt HashList::getNumKeys() const {
+    return _numKeys;
 }
 
-void HashList::set_num_keys(USI_t i_num_keys) {
-    HashList::num_keys = i_num_keys;
+void HashList::setNumKeys(SmInt numKeys) {
+    HashList::_numKeys = numKeys;
 }
 
-KeyNode* HashList::get_keys() const {
-    return keys;
+KeyNode* HashList::getKeys() const {
+    return _headKey;
 }
 
-void HashList::set_keys(KeyNode* i_keys) {
-    HashList::keys = i_keys;
+void HashList::setHeadKey(KeyNode* keynode) {
+    HashList::_headKey = keynode;
 }
