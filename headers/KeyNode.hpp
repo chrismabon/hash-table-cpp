@@ -75,22 +75,22 @@ public:
 
     /**
      * EMPTY CONSTRUCTOR
-     * @brief Instantiate an empty KeyNode
+     * @brief An empty KeyNode
      */
     KeyNode();
 
     /**
      * PRIMARY CONSTRUCTOR
-     * @brief Instantiate KeyNode with input key and
-     * @param key String value assigned to _key
+     * @brief KeyNode with input key
+     * @param key   String value assigned to _key
      */
     explicit KeyNode(std::string key);
 
     /**
      * SECONDARY CONSTRUCTOR
-     * @brief Instantiate KeyNode with input key and
-     * @param key String value assigned to _key
-     * @param next Link to next node in parent list (can be nullptr)
+     * @brief KeyNode with input key and pointer to next node
+     * @param key   String value assigned to _key
+     * @param next   Link to next node in parent list (can be nullptr)
      */
     KeyNode(std::string key, KeyNode* next);
 
@@ -105,23 +105,42 @@ public:
     /// ###########################
 
     /**
-     * GETS
-     *  -All get functions return their respective values naively
+     * GET KEY
+     *  @brief Returns the key string within a node
      */
     std::string getKey() const;
 
+    /**
+     * GET KEY LENGTH
+     *  @brief Returns the actual un-padded size of the key
+     */
     SmInt getKeyLen() const;
 
+    /**
+     * GET NEXT
+     *  @brief Returns the pointer to the next node in the list
+     */
     KeyNode* getNext() const;
 
     /**
-     * SETS
-     *  -All set functions assign values without validating input
+     * SET KEY
+     * @brief Assigns given key string to node
+     * @param key   C++ strings only
      */
     void setKey(std::string key);
 
+    /**
+      * SET KEY LENGTH
+      * @brief Assigns given value to the key length variable
+      * @param keyLen   Unsigned short integer type
+      */
     void setKeyLen(SmInt keyLen);
 
+    /**
+      * SET NEXT
+      * @brief Assigns given pointer to the link variable
+      * @param next   KeyNode address to which next is assigned
+      */
     void setNext(KeyNode* next);
 };
 

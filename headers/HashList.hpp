@@ -70,29 +70,61 @@ public:
     /// ### CONSTRUCTORS & DESTRUCTOR ###
     /// #################################
 
-    // TODO finish comments on HashList header file
+    /**
+     * EMPTY CONSTRUCTOR
+     * @brief An empty HashList
+     */
     HashList();
 
-    // Basic constructor
+    /**
+     * PRIMARY CONSTRUCTOR
+     * @brief HashList with number of keys and head node
+     * @param numKeys   Count of nodes in list, numKeys >1 indicates (a) hash collision(s)
+     * @param keys   Points to first node in the list
+     */
     explicit HashList(SmInt numKeys = 0, KeyNode* keys = nullptr);
 
-    // Destructor
-    // Traverses the internal list of keys, deletes all entries
+    /**
+     * DESTRUCTOR
+     * @brief Traverses the internal list of keys, deleting all entries
+     */
     virtual ~HashList();
 
-    // Gets
+    /// ###########################
+    /// ### GET & SET FUNCTIONS ###
+    /// ###########################
+
+    /**
+     * GET NUM KEYS
+     *  @brief Returns the number of keys in the list
+     *  @return Unsigned short integer return type
+     */
     SmInt getNumKeys() const;
 
+    /**
+     * GET KEYS
+     *  @brief Returns a pointer to the top node of the list
+     */
     KeyNode* getKeys() const;
 
-    // Sets
+    /**
+      * SET NUMBER OF KEYS
+      * @brief Assigns given value to the number of keys variable
+      * @param key   Unsigned short integer type
+      */
     void setNumKeys(SmInt numKeys);
 
+    /**
+      * SET HEAD KEY
+      * @brief Assigns given node address to head node variable
+      * @param key   C++ strings only
+      */
     void setHeadKey(KeyNode* keynode);
 
-    // List operations
-    // Add node
-    void appendNode(KeyNode* keynode);
+    /// #######################
+    /// ### LIST OPERATIONS ###
+    /// #######################
+
 };
 
 

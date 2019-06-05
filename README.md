@@ -15,8 +15,6 @@ Description
     ~ Table class passes object handles to Output class for printing
 ```
 
-![Hash table structural diagram](images/structure.png)
-
 ## Functionality
 
 ```
@@ -34,9 +32,6 @@ Constraints
 - Only accepts C++ std::string as the key value type
 - Table should not be more than 70% full for best performance
 ```
-## Features implemented
-
-![Progress chart](images/progress.png)
 
 ## Tools
 
@@ -44,9 +39,6 @@ Constraints
 * [CMake](https://cmake.org/documentation/) - C/C++ build manager v3.10.3
 * [GDB](https://www.gnu.org/software/gdb/documentation/) - GNU Project Debugger v8.1
 * [GCC](https://gcc.gnu.org/onlinedocs/) - GNU C/C++ compiler v8.2.0
-* [GIMP](https://www.gimp.org/) - GNU Image Manipulation Program v2.10.8
-* [Dia](http://dia-installer.de/index.html.en) - Structured diagram editor v0.97
-* [LibreOffice Calc](https://www.libreoffice.org/) - LibreOffice spreadsheet editor v6.1.5.2
 
 ## License and Copyright
 
