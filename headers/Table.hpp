@@ -5,9 +5,9 @@
  * A data structure template in C++
  * Copyright (C) 2019 Chris Mabon
  *
- * This program is free software: you can redistribute it and/or modify
+ * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -15,8 +15,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 /**
@@ -44,22 +44,44 @@
  */
 class Table {
 private:
-    // Number of occupied buckets in the table
+    /// #####################
+    /// ### CLASS MEMBERS ###
+    /// #####################
+
+    /**
+     * FILLED BUCKETS
+     * -Should be <75% of capacity for performance reasons
+     */
     LgInt fill;
 
-    // Total size of the array (not actual table capacity)
-    // Must be a power of 2
+    /**
+     * TABLE SIZE
+     * -Total size of the array (not actual table capacity)
+     * -Must be a power of 2
+     */
     LgInt tbl_size;
 
-    // Pointer to array of hash lists
+    /**
+     * TABLE
+     * -Underlying array of hash lists
+     */
     HashList** table;
 
 public:
-    // Basic constructor
+    /// #################################
+    /// ### CONSTRUCTORS & DESTRUCTOR ###
+    /// #################################
+
+    /**
+     * PRIMARY CONSTRUCTOR
+     * @brief Default value for fill and table size is 0, and nullptr for table array
+     */
     Table(LgInt i_fill, LgInt i_tbl_size, HashList** i_table);
 
-    // Destructor
-    // Frees all hash entries
+    /**
+     * DESTRUCTOR
+     * @brief Clears the table of entries and frees allocated memory
+     */
     virtual ~Table();
 
     // Gets

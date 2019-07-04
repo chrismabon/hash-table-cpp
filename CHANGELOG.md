@@ -1,5 +1,11 @@
 # Change Log
 
+## 2019-07-04
+
+###### Changes
+
+- re-licensed project under GNU GPL v2.1
+
 ## 2019-04-12
 
 ###### Additions
