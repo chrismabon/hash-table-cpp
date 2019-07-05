@@ -56,10 +56,10 @@ private:
 
     /**
      * TABLE SIZE
-     * -Total size of the array (not actual table capacity)
+     * -Total size of the array (not table capacity)
      * -Must be a power of 2
      */
-    LgInt tbl_size;
+    LgInt tblSize;
 
     /**
      * TABLE
@@ -76,7 +76,7 @@ public:
      * PRIMARY CONSTRUCTOR
      * @brief Default value for fill and table size is 0, and nullptr for table array
      */
-    Table(LgInt i_fill, LgInt i_tbl_size, HashList** i_table);
+    Table(LgInt tblSizeArg, LgInt fillArg = 0, HashList** tableArg);
 
     /**
      * DESTRUCTOR
@@ -84,19 +84,48 @@ public:
      */
     virtual ~Table();
 
-    // Gets
-    LgInt get_fill() const;
+    /// ###########################
+    /// ### GET & SET FUNCTIONS ###
+    /// ###########################
 
-    LgInt get_tbl_size() const;
+    /**
+     * GET FILL
+     *  @brief Returns the number of filled buckets
+     */
+    LgInt getFill() const;
 
-    HashList** get_table() const;
+    /**
+     * GET TABLE SIZE
+     *  @brief Returns the total size of the array
+     */
+    LgInt getTblSize() const;
 
-    // Sets
-    void set_fill(LgInt i_fill);
+    /**
+     * GET TABLE
+     *  @brief Returns a pointer to the array of hash lists
+     */
+    HashList** getTable() const;
 
-    void set_tbl_size(LgInt i_tbl_size);
+    /**
+     * SET FILL
+     * @brief Assigns given integer value to fill
+     * @param key   unsigned long int
+     */
+    void setFill(LgInt fillArg);
 
-    void set_table(HashList** i_table);
+    /**
+     * SET TABLE SIZE
+     * @brief Assigns given integer value to tableSize
+     * @param key   unsigned long int
+     */
+    void setTblSize(LgInt tblSizeArg);
+
+    /**
+     * SET TABLE
+     * @brief Assigns given hash list array pointer to table array var
+     * @param key   unsigned long int
+     */
+    void setTable(HashList** tableArg);
 
 };
 

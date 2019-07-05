@@ -27,8 +27,8 @@
 
 #include "../headers/Table.hpp"
 
-Table::Table(LgInt i_fill = 0, LgInt i_tbl_size = 0, HashList** i_table = nullptr)
-        : fill(i_fill), tbl_size(i_tbl_size), table(i_table) {
+Table::Table(LgInt tblSizeArg, LgInt fillArg = 0, HashList** tableArg)
+        : fill(fillArg), tblSize(tblSizeArg), table(tableArg) {
 
 }
 
@@ -36,26 +36,26 @@ Table::~Table() = default {
 
 }
 
-LgInt Table::get_fill() const {
+LgInt Table::getFill() const {
     return fill;
 }
 
-LgInt Table::get_tbl_size() const {
-    return tbl_size;
+LgInt Table::getTblSize() const {
+    return tblSize;
 }
 
-HashList** Table::get_table() const {
+HashList** Table::getTable() const {
     return table;
 }
 
-void Table::set_fill(LgInt i_fill) {
-    Table::fill = i_fill;
+void Table::setFill(LgInt fillArg) {
+    Table::fill = fillArg;
 }
 
-void Table::set_tbl_size(LgInt i_tbl_size) {
-    Table::tbl_size = i_tbl_size;
+void Table::setTblSize(LgInt tblSizeArg) {
+    Table::tblSize = tblSizeArg;
 }
 
-void Table::set_table(HashList** i_table) {
-    Table::table = i_table;
+void Table::setTable(HashList** tableArg) {
+    Table::table = tableArg;
 }
