@@ -1,4 +1,4 @@
-#### Hash Table
+# Hash Table
 
 A rather simple hash table for strings, written in C++
 
