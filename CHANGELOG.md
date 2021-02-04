@@ -1,5 +1,11 @@
 # Change Log
 
+## 2021-02-03
+
+###### Changes
+
+- project is now under GNU LGPLv3
+
 ## 2019-07-05
 
 ###### Changes
