@@ -1,6 +1,10 @@
 # Hash Table
 
-A rather simple hash table for strings, written in C++
+#### A rather simple hash table for strings, written in C++
+
+PLEASE READ => _*(This project is incomplete: it is missing many core features and may contain numerous bugs.
+It is advised not to use any code in this repo until those issues are addressed and this warning 
+is subsequently removed. Thanks!)*_ 
 
 ## Structure
 
