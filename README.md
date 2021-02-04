@@ -39,13 +39,13 @@ Constraints
 
 ## Tools
 
-* [CLion](https://www.jetbrains.com/clion/documentation/) -  IDE by Jetbrains v2018.1.6
-* [CMake](https://cmake.org/documentation/) - C/C++ build manager v3.10.3
-* [GDB](https://www.gnu.org/software/gdb/documentation/) - GNU Project Debugger v8.1
-* [GCC](https://gcc.gnu.org/onlinedocs/) - GNU C/C++ compiler v8.2.0
+* [CLion](https://www.jetbrains.com/clion/documentation/) -  IDE by Jetbrains
+* [CMake](https://cmake.org/documentation/) - C/C++ build manager
+* [GDB](https://www.gnu.org/software/gdb/documentation/) - GNU Project Debugger
+* [GCC](https://gcc.gnu.org/onlinedocs/) - GNU C/C++ compiler
 
 ## License and Copyright
 
-This project is [licensed](LICENSE) under the GNU General Public License v3.0 (GNU GPLv3)
+This project is licensed under the GNU General Public License v3.0 (GNU GPLv3)
 
-[Copyright](COPYRIGHT) &copy; 2019 Chris Mabon
+Copyright 2021 Umbra Aeterna Labs <https://github.com/Umbra-Aeterna-Labs>
