@@ -38,3 +38,6 @@ images/
 ### IDE-specific files and folders
 .idea
 .idea/
+
+### CMake build folder
+/cmake-build-debug/
