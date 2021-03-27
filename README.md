@@ -48,4 +48,4 @@ Constraints
 
 This project is licensed under the GNU General Public License v3.0 (GNU GPLv3)
 
-Copyright 2021 Umbra Aeterna Labs <https://github.com/Umbra-Aeterna-Labs>
+Copyright 2021 Chris Mabon
